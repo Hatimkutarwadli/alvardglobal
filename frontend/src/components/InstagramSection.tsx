@@ -99,11 +99,9 @@ const InstagramSection = () => {
                     </div>
                 ) : (
                     <div className="relative -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
-                        <motion.div 
+                        <div 
                             ref={carouselRef}
-                            className="flex cursor-grab active:cursor-grabbing overflow-x-auto pb-10 hide-scrollbar"
-                            drag="x"
-                            dragConstraints={carouselRef}
+                            className="flex overflow-x-auto pb-10 hide-scrollbar snap-x snap-mandatory"
                             style={{ paddingRight: "10vw" }}
                         >
                             <div className="flex gap-6 md:gap-8 flex-nowrap w-max">
@@ -122,7 +120,7 @@ const InstagramSection = () => {
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true, margin: "-50px" }}
                                             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                            className="group relative flex-shrink-0 w-[240px] md:w-[300px] aspect-[9/16] overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500"
+                                            className="group relative flex-shrink-0 w-[240px] md:w-[300px] aspect-[9/16] overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 snap-center"
                                         >
                                             {imgUrl ? (
                                                 <img 
@@ -168,7 +166,7 @@ const InstagramSection = () => {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.8, delay: reels.length * 0.1 }}
-                                    className="flex-shrink-0 w-[240px] md:w-[300px] aspect-[9/16] rounded-2xl border-2 border-dashed border-primary/30 flex flex-col items-center justify-center gap-4 hover:border-primary hover:bg-primary/5 transition-all duration-500 group"
+                                    className="flex-shrink-0 w-[240px] md:w-[300px] aspect-[9/16] rounded-2xl border-2 border-dashed border-primary/30 flex flex-col items-center justify-center gap-4 hover:border-primary hover:bg-primary/5 transition-all duration-500 group snap-center"
                                 >
                                     <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                                         <ArrowRight className="h-6 w-6 text-primary" />
@@ -178,7 +176,7 @@ const InstagramSection = () => {
                                     </div>
                                 </motion.a>
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
                 )}
             </div>
