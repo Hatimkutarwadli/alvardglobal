@@ -1,15 +1,49 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import fabricImg from "@/assets/fabric-texture.jpg";
 import factoryImg from "@/assets/factory-floor.jpg";
+import ShippingGlobe from "@/components/ShippingGlobe";
 
 const stats = [
-    { value: "25+", label: "Years of Excellence" },
-    { value: "50M+", label: "Garments Produced" },
-    { value: "30+", label: "Countries Served" },
-    { value: "100%", label: "Quality Commitment" },
+    { numeric: 25, suffix: "+", label: "Years of Excellence" },
+    { numeric: 50, suffix: "M+", label: "Garments Produced" },
+    { numeric: 30, suffix: "+", label: "Countries Served" },
+    { numeric: 100, suffix: "%", label: "Quality Commitment" },
 ];
+
+// Animated counter component
+const CountUpStat = ({
+    target, suffix, isVisible, delay = 0
+}: { target: number; suffix: string; isVisible: boolean; delay?: number }) => {
+    const [count, setCount] = useState(0);
+    const hasRun = useRef(false);
+
+    useEffect(() => {
+        if (!isVisible || hasRun.current) return;
+        hasRun.current = true;
+
+        const timeout = setTimeout(() => {
+            const duration = 1500; // ms
+            const startTime = performance.now();
+
+            const step = (now: number) => {
+                const progress = Math.min((now - startTime) / duration, 1);
+                // Ease-out cubic
+                const eased = 1 - Math.pow(1 - progress, 3);
+                setCount(Math.floor(eased * target));
+                if (progress < 1) requestAnimationFrame(step);
+                else setCount(target);
+            };
+
+            requestAnimationFrame(step);
+        }, delay);
+
+        return () => clearTimeout(timeout);
+    }, [isVisible, target, delay]);
+
+    return <>{count}{suffix}</>;
+};
 
 const AboutSection = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
@@ -58,24 +92,39 @@ const AboutSection = () => {
                     </div>
                 </div>
 
-                {/* Stats */}
-                <div
-                    ref={statsRef}
-                    className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pt-16 border-t border-border"
-                >
-                    {stats.map((stat, i) => (
-                        <div
-                            key={stat.label}
-                            className={`text-center transition-all duration-700 ${statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                                }`}
-                            style={{ transitionDelay: `${i * 150}ms` }}
-                        >
-                            <div className="text-display text-3xl md:text-5xl font-bold text-primary">{stat.value}</div>
-                            <div className="text-body text-xs md:text-sm tracking-[0.2em] uppercase text-muted-foreground mt-2">
-                                {stat.label}
+                {/* Merged Stats and Globe Section */}
+                <div className="mt-24 md:mt-32 pt-16 border-t border-border grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+                    {/* Stats - Left on Desktop */}
+                    <div
+                        ref={statsRef}
+                        className="grid grid-cols-2 gap-8 md:gap-12"
+                    >
+                        {stats.map((stat, i) => (
+                            <div
+                                key={stat.label}
+                                className={`text-center transition-all duration-700 ${statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                                style={{ transitionDelay: `${i * 150}ms` }}
+                            >
+                                <div className="text-display text-4xl md:text-5xl font-bold text-primary">
+                                    <CountUpStat
+                                        target={stat.numeric}
+                                        suffix={stat.suffix}
+                                        isVisible={statsVisible}
+                                        delay={i * 150}
+                                    />
+                                </div>
+                                <div className="text-body text-xs md:text-sm tracking-[0.2em] uppercase text-muted-foreground mt-2">
+                                    {stat.label}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
+
+                    {/* Globe Section - Right on Desktop */}
+                    <div className="w-full flex justify-center">
+                        <ShippingGlobe />
+                    </div>
                 </div>
             </div>
         </section>
