@@ -38,7 +38,7 @@ const HeroSection = () => {
                             }`}
                     >
                         <div className="accent-line mb-6" />
-                        <p className="text-body text-sm md:text-base tracking-[0.3em] uppercase text-muted-foreground mb-4">
+                        <p className="text-body text-sm md:text-base tracking-[0.3em] uppercase text-foreground/70 mb-4">
                             Since 1996 · Tirupur, India
                         </p>
                     </div>
