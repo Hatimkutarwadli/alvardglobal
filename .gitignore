@@ -10,7 +10,6 @@ frontend/.env
 
 # logs
 *.log
-
 # IDE files
 .vscode/
 .idea/
