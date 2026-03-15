@@ -75,20 +75,33 @@ const AboutSection = () => {
                     </div>
 
                     <div className="relative">
-                        <motion.div className="overflow-hidden" style={{ y: imgY }}>
+                        <motion.div 
+                            className="overflow-hidden rounded-2xl" 
+                            style={{ y: imgY }}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.2 }}
+                        >
                             <img
                                 src={fabricImg}
-                                alt="Premium cotton fabric texture"
+                                alt="Textile manufacturing company interior"
                                 className="w-full aspect-[4/5] object-cover"
                             />
                         </motion.div>
-                        <div className="absolute -bottom-8 -left-4 md:-left-8 w-2/3 border-4 border-background overflow-hidden shadow-2xl">
+                        <motion.div 
+                            className="absolute -bottom-8 -left-4 md:-left-8 w-2/3 border-4 border-background overflow-hidden shadow-2xl rounded-2xl"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.2, delay: 0.3 }}
+                        >
                             <img
                                 src={factoryImg}
                                 alt="Alvard manufacturing floor"
                                 className="w-full aspect-video object-cover"
                             />
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
 
