@@ -5,6 +5,7 @@ import MarqueeBanner from "@/components/MarqueeBanner";
 import AboutSection from "@/components/AboutSection";
 import ProductsSection from "@/components/ProductsSection";
 import JourneySection from "@/components/JourneySection";
+import InstagramSection from "@/components/InstagramSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
@@ -19,6 +20,7 @@ const Index = () => {
             <AboutSection />
             <ProductsSection />
             <JourneySection />
+            <InstagramSection />
             <ContactSection />
             <Footer />
         </div>
