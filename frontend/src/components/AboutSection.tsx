@@ -1,0 +1,85 @@
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import fabricImg from "@/assets/fabric-texture.jpg";
+import factoryImg from "@/assets/factory-floor.jpg";
+
+const stats = [
+    { value: "25+", label: "Years of Excellence" },
+    { value: "50M+", label: "Garments Produced" },
+    { value: "30+", label: "Countries Served" },
+    { value: "100%", label: "Quality Commitment" },
+];
+
+const AboutSection = () => {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+    const imgY = useTransform(scrollYProgress, [0, 1], [80, -80]);
+
+    const { ref: textRef, isVisible: textVisible } = useScrollAnimation();
+    const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation();
+
+    return (
+        <section id="about" ref={sectionRef} className="py-24 md:py-40 section-padding">
+            <div className="max-w-7xl mx-auto">
+                {/* About header */}
+                <div ref={textRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24 md:mb-40">
+                    <div className={`transition-all duration-1000 ${textVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"}`}>
+                        <p className="text-body text-sm tracking-[0.3em] uppercase text-primary mb-4">About the Company</p>
+                        <h2 className="text-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] text-foreground">
+                            Crafting Excellence
+                            <br />
+                            <span className="italic font-normal">Since 1996</span>
+                        </h2>
+                        <div className="accent-line mt-6" />
+                        <p className="text-body text-base md:text-lg text-muted-foreground mt-8 leading-relaxed">
+                            Founded by Mrs. Fatema Burhani, Al-Vard Collection began with a dream to offer quality, fashionable products. Today, our factory in Tirupur specializes in premium white labeling services for global exports — from yarn to finished product.
+                        </p>
+                        <p className="text-body text-base md:text-lg text-muted-foreground mt-4 leading-relaxed">
+                            With a relentless focus on precision and on-time delivery, we ensure every garment meets the highest international standards.
+                        </p>
+                    </div>
+
+                    <div className="relative">
+                        <motion.div className="overflow-hidden" style={{ y: imgY }}>
+                            <img
+                                src={fabricImg}
+                                alt="Premium cotton fabric texture"
+                                className="w-full aspect-[4/5] object-cover"
+                            />
+                        </motion.div>
+                        <div className="absolute -bottom-8 -left-4 md:-left-8 w-2/3 border-4 border-background overflow-hidden shadow-2xl">
+                            <img
+                                src={factoryImg}
+                                alt="Alvard manufacturing floor"
+                                className="w-full aspect-video object-cover"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Stats */}
+                <div
+                    ref={statsRef}
+                    className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pt-16 border-t border-border"
+                >
+                    {stats.map((stat, i) => (
+                        <div
+                            key={stat.label}
+                            className={`text-center transition-all duration-700 ${statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                                }`}
+                            style={{ transitionDelay: `${i * 150}ms` }}
+                        >
+                            <div className="text-display text-3xl md:text-5xl font-bold text-primary">{stat.value}</div>
+                            <div className="text-body text-xs md:text-sm tracking-[0.2em] uppercase text-muted-foreground mt-2">
+                                {stat.label}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default AboutSection;
