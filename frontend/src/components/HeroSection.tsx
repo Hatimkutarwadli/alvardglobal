@@ -56,7 +56,7 @@ const HeroSection = () => {
                         className={`text-body text-base md:text-lg text-muted-foreground mt-6 md:mt-8 max-w-lg leading-relaxed transition-all duration-1000 delay-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                     >
-                        Premium garment manufacturing with 25+ years of excellence.
+                        Premium garment manufacturing with 30+ years of excellence.
                         From premium yarns to precision stitching.
                     </p>
 
@@ -71,10 +71,10 @@ const HeroSection = () => {
                             Explore
                         </button>
                         <button
-                            onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+                            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                             className="border border-border text-foreground px-8 py-3.5 text-body text-sm tracking-widest uppercase font-medium hover:bg-secondary transition-colors"
                         >
-                            Our Story
+                            Contact Us
                         </button>
                     </div>
                 </div>

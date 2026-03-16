@@ -14,7 +14,7 @@ const contactItems = [
     { icon: Mail, title: "Email", detail: "info@alvardglobaltrade.com", href: "mailto:info@alvardglobaltrade.com" },
     { icon: Factory, title: "Factory Address", detail: "Tirupur, Tamil Nadu, India", href: "https://maps.google.com/?q=Tirupur,Tamil Nadu" },
     { icon: MapPin, title: "Head Office", detail: "Mufaddal Manzil, Al-vard Collection, Safiyah Road, Opp. Ezzy Hall, Surat, Gujarat 395003", href: "#" },
-    { icon: Phone, title: "Phone", detail: "+91 93749 86852", href: "tel:+919374986852" },
+    { icon: Phone, title: "Phone", detail: "+91 92652 06702", href: "tel:+919265206702" },
 ];
 
 const formSchema = z.object({

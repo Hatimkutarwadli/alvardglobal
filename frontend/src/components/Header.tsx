@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Moon, Sun, Menu, X } from "lucide-react";
+import logoImg from "@/assets/logo.png";
 
 interface HeaderProps {
     theme: "light" | "dark";
@@ -26,13 +27,16 @@ const Header = ({ theme, toggleTheme }: HeaderProps) => {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                    ? "bg-background/90 backdrop-blur-md border-b border-border shadow-sm"
-                    : "bg-transparent"
+                ? "bg-background/90 backdrop-blur-md border-b border-border shadow-sm"
+                : "bg-transparent"
                 }`}
         >
             <div className="section-padding flex items-center justify-between h-16 md:h-20">
-                <button onClick={() => scrollTo("hero")} className="text-display text-xl md:text-2xl font-bold tracking-wider text-foreground">
-                    ALVARD
+                <button onClick={() => scrollTo("hero")} className="flex items-center gap-3">
+                    <img src={logoImg} alt="Al-Vard Logo" className="h-8 md:h-10 w-auto object-contain" />
+                    <span className="text-display text-xl md:text-2xl font-bold tracking-wider text-foreground">
+                        AL-VARD
+                    </span>
                 </button>
 
                 {/* Desktop nav */}

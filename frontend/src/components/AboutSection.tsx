@@ -6,9 +6,9 @@ import factoryImg from "@/assets/factory-floor.jpg";
 import ShippingGlobe from "@/components/ShippingGlobe";
 
 const stats = [
-    { numeric: 25, suffix: "+", label: "Years of Excellence" },
-    { numeric: 50, suffix: "M+", label: "Garments Produced" },
-    { numeric: 30, suffix: "+", label: "Countries Served" },
+    { numeric: 30, suffix: "+", label: "Years of Excellence" },
+    { numeric: 15, suffix: "M+", label: "Garments Produced" },
+    { numeric: 20, suffix: "+", label: "Countries Served" },
     { numeric: 100, suffix: "%", label: "Quality Commitment" },
 ];
 
@@ -75,8 +75,8 @@ const AboutSection = () => {
                     </div>
 
                     <div className="relative">
-                        <motion.div 
-                            className="overflow-hidden rounded-2xl" 
+                        <motion.div
+                            className="overflow-hidden rounded-2xl"
                             style={{ y: imgY }}
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
@@ -89,7 +89,7 @@ const AboutSection = () => {
                                 className="w-full aspect-[4/5] object-cover"
                             />
                         </motion.div>
-                        <motion.div 
+                        <motion.div
                             className="absolute -bottom-8 -left-4 md:-left-8 w-2/3 border-4 border-background overflow-hidden shadow-2xl rounded-2xl"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
