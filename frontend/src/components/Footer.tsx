@@ -13,6 +13,10 @@ const Footer = () => (
             <p className="text-body text-xs text-muted-foreground tracking-wider">
                 © {new Date().getFullYear()} Alvard Global Trade. All rights reserved.
             </p>
+            <p className="text-body text-xs text-muted-foreground tracking-wider">
+                Developed by <a href="https://github.com/Hatimkutarwadli" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Hatim Kutarwadliwala</a>
+                and <a href="https://github.com/Sakina152" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Sakina Dhilawala</a>
+            </p>
         </div>
     </footer>
 );
